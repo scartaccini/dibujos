@@ -1,0 +1,21 @@
+{% extends "blog/base.html" %}
+{% block contenido %}
+{% if posteos %}
+{% for post in posteos %}
+<div class="post">
+    <div class="date">
+        {{ post.published_date }}
+    </div>
+    <h1><a href="{% url 'ver_post' post.id %}">{{ post.title }}</a></h1>
+    <p>Creado poRR: {{ post.author|upper }}</p>
+    {% if post.imagen %}
+    <p><img src="{{post.imagen.url}}" width="250",height="250"></p>
+    <p>{{ post.text|linebreaks }}</p>
+    {% endif %}
+</div>
+{% endfor %}
+{% else %}
+<h1>No hay registro de post</h1>
+
+{% endif %}
+{% endblock %}

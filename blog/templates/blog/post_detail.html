@@ -1,0 +1,20 @@
+{% extends "blog/base.html" %}
+
+{% block contenido %}
+    <div class="date">
+        {% if post.published_date %}
+            {{ post.published_date }}
+        {% endif %}
+        {{ user.username}}
+        {{ post.author }}
+        {% if post.imagen %}
+        <p><img src="{{post.imagen.url}}" width="150",height="150"></p>
+        {% endif %}
+    <!-- si el autor y el usuario logeado son los mismo-->
+    {% if post.author.username  == user.username %}
+        <a class="btn btn-default" href="{% url 'edit_post' post.id %}"><span class="glyphicon glyphicon-pencil"></span></a>
+{% endif %}
+    </div>
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.text|linebreaks }}</p>
+{% endblock %}
