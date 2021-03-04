@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
-    url(r'^$', views.post_list, name='inicio'),
+    url(r'^$', views.post_list, name='inicio'),    
     url(r'^post/(?P<id_post>[0-9]+)/$', login_required(views.post_detail) , name='ver_post'),
     url(r'^post/(?P<id_post>[0-9]+)/edit/$', login_required(views.post_edit), name='edit_post'),
     url(r'^post/new/$', login_required(views.post_new), name='post_new'),
